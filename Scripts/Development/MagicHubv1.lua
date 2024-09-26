@@ -7,7 +7,7 @@ game:GetService("StarterGui"):SetCore("SendNotification", {
 print("MagicHubv1")
 
 -- // Src Get
-local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/MappleGaming208/Scripts/main/MagicHubv1src.lua', true))()
+local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/MappleGaming208/Magic/main/Scripts/Development/MagicHubv1src.lua', true))()
 print("Loaded MagicHubv1")
 --[[print([[
 ┌───────────────────────────────────────────────────────────────────────────────────────────────────────────┐
