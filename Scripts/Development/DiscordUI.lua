@@ -13,7 +13,7 @@ _G.Settings = {
 	}
 }
 
-local DLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/SixZensED/Discord-Library/main/Library"))()
+local DLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/MappleGaming208/Magic/main/Scripts/Development/DiscordUiSource.txt"))()
 
 --tab1--
 
