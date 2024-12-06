@@ -1,4 +1,4 @@
-local library = loadstring(game.HttpGet(game, "raw.githubusercontent.com/MappleGaming208/Magic/main/Scripts/Development/0x37.txt"))()
+local library = loadstring(game.HttpGet(game, "https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/0x"))()
 
 local Ainfo = library:Window("Info") -- Text
 local BUniversal = library:Window("Universal")
@@ -51,5 +51,5 @@ BUniversal:Button(
     end
 ) -- Text, Callback
 
-BUniversal:Label("0 x 3 7") -- Text
+BUniversal:Label("0 x 3 7 LShift To Toggle") -- Text
 Ainfo:Label("Made By MappleGaming208") -- Text
