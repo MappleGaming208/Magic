@@ -1,4 +1,4 @@
-local library = loadstring(game.HttpGet(game, "https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/0x"))()
+local library = loadstring(game.HttpGet(game, "raw.githubusercontent.com/MappleGaming208/Magic/main/Scripts/Development/0x37.txt"))()
 
 local Ainfo = library:Window("Info") -- Text
 local BUniversal = library:Window("Universal")
