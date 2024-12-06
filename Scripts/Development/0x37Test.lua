@@ -8,6 +8,13 @@ BUniversal:Button(
     function()
         print("Hi")
     end
+) 
+
+BUniversal:Button(
+    "Reset Character",
+    function()
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+    end
 ) -- Text, Callback
 
 BUniversal:Slider(
