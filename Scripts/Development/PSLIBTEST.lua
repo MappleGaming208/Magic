@@ -1,39 +1,53 @@
-local Link = loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostDuckyy/Ui-Librarys/main/Playstation%20Ui%20Library/Source'))()
+local library = loadstring(game.HttpGet(game, "https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/0x"))()
 
-local Win = Link:CreateWindow('Name','Yeah Info') -- :CreateWindow(Title,Info) Note: info no space
+local w1 = library:Window("a") -- Text
 
-local Tab = Win:addPage('Tab', 2, true, 6) -- :addPage(Title, Scoll Size, Visible, elementspacing)
--- Note: Dont have update function
-
-
--- Label
-Tab:addLabel('This a Label', 'Label info') -- :addLabel(Title, Info)
-
--- Button
-Tab:addButton('This a button', function() -- :addButton(Title, callback)
-    print('Clicked Button')
-end)
-
--- Toggles
-Tab:addToggle('Toggle', function(value) -- :addToggle(Title, callback)
-    if value then -- if true then
-        print('True') -- print true
-    else -- else false
-        print('False') -- print false
+w1:Button(
+    "Print Hi",
+    function()
+        print("Hi")
     end
-end)
+) -- Text, Callback
 
--- Slider
-Tab:addSlider('Slider', 1,100, function(value) -- :addSlider(Title, min, max, callback)
-    print(value)
-end)
+w1:Slider(
+    "WalkSpeed",
+    "WS",
+    16,
+    300,
+    function(value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+    end
+) -- Text, Flag, Minimum, Maximum, Callback, Default (Optional), Flag Location (Optional)
 
--- TextBox
-Tab:addTextBox('Textbox', 'Textbox Info', function(text) -- :addTextBox(Title, Info)
-    print(text)
-end)
+w1:Slider(
+    "JumpPower",
+    "JP",
+    50,
+    300,
+    function(value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+    end,
+    100
+) -- Text, Flag, Minimum, Maximum, Callback, Default (Optional), Flag Location (Optional)
 
--- Dropdown
-Tab:addDropdown('This is DropDown', {'1', '2', '3', '4', '5'}, 4, function(options) -- :addDropdown(Title, {'List', 'Yeah'}, Scroll Size, callback)
-    print(options)
-end)
+w1:Toggle(
+    "Freeze",
+    "frz",
+    false,
+    function(toggled)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = toggled
+    end
+) -- Text, Flag, Enabled, Callback, Flag Location (Optional)
+
+w1:Button(
+    "Destroy GUI",
+    function()
+        for i, v in pairs(game.CoreGui:GetChildren()) do
+            if v:FindFirstChild("Top") then
+                v:Destroy()
+            end
+        end
+    end
+) -- Text, Callback
+
+w1:Label("0 x 3 7") -- Text
