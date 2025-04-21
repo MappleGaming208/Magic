@@ -1,5 +1,5 @@
 local urls = {
-    repo = "https://raw.githubusercontent.com/MappleGaming208/Magic/main/Scripts/Development/DeadRailsHub/",
+    repo = "https://github.com/MappleGaming208/Magic/main/Scripts/Development/DeadRailsHub/",
     source = "src",
     config = "config",
 }
