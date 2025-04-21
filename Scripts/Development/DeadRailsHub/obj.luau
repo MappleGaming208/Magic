@@ -19,5 +19,5 @@ local LoadedConfig, LoadConfig = pcall(game.HttpGet, game, config, true)
 if LoadedConfig then
     loadstring(LoadConfig)()
 else
-    warn("Error fetching:", LoadConfig)
+    warn("Error fetching v1:", LoadConfig)
 end
