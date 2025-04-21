@@ -8,7 +8,7 @@ local MainLink = urls.repo .. urls.source .. ".luau?raw=true"
 local SuccessfullyLoadedLibrary, LoadLibrary = pcall(game.HttpGet, game, MainLink, true)
 
 if SuccessfullyLoadedLibrary then
-    local Mercury = loadstring(LoadLibrary)()
+    local Mercury = loadstring(LoadLibrary)(), print(LoadLibrary),
 else
     warn("Error fetching v1:", LoadLibrary)
 end
