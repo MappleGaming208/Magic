@@ -4,7 +4,7 @@ local urls = {
     config = "config",
 }
 
-local MainLink = urls.repo .. urls.source .. ".luau"
+local MainLink = urls.repo .. urls.source .. ".luau?raw=true"
 local SuccessfullyLoadedLibrary, LoadLibrary = pcall(game.HttpGet, game, MainLink, true)
 
 if SuccessfullyLoadedLibrary then
@@ -13,7 +13,7 @@ else
     warn("Error fetching:", LoadLibrary)
 end
 
-local config = urls.repo .. urls.config .. ".luau"
+local config = urls.repo .. urls.config .. ".luau?raw=true"
 local LoadedConfig, LoadConfig = pcall(game.HttpGet, game, config, true)
 
 if LoadedConfig then
