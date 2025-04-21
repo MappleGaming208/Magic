@@ -10,7 +10,7 @@ local SuccessfullyLoadedLibrary, LoadLibrary = pcall(game.HttpGet, game, MainLin
 if SuccessfullyLoadedLibrary then
     local GUI = loadstring(LoadLibrary)()
 else
-    warn("Error fetching:", LoadLibrary)
+    warn("Error fetching v1:", LoadLibrary)
 end
 
 local config = urls.repo .. urls.config .. ".luau?raw=true"
@@ -19,5 +19,5 @@ local LoadedConfig, LoadConfig = pcall(game.HttpGet, game, config, true)
 if LoadedConfig then
     loadstring(LoadConfig)()
 else
-    warn("Error fetching v1:", LoadConfig)
+    warn("Error fetching v2:", LoadConfig)
 end
