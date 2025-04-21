@@ -5,11 +5,12 @@ local urls = {
 }
 
 local LoadScript = urls.repo .. urls.load .. ".luau?raw=true"
-local ScriptLoaded, LoadScript = pcall(game.HttpGet, game, MainLink, true)
+local ScriptLoaded, LoadedScript = pcall(game:HttpGetAsync, LoadScript)
 
 if ScriptLoaded then
-    local GUI = loadstring(LoadScript)()
+    local GUI = loadstring(LoadedScript)()
 else
-    warn("Error fetching:", LoadScript)
+    warn("Error fetching:", LoadedScript)
 end
+
 ```
