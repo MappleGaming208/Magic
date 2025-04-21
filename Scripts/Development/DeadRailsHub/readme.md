@@ -1,7 +1,7 @@
 ```lua
 local urls = {
     repo = "https://raw.githubusercontent.com/MappleGaming208/Magic/main/Scripts/Development/DeadRailsHub/",
-    load = "src",
+    load = "obj",
 }
 
 local LoadScript = urls.repo .. urls.load .. ".luau?raw=true"
