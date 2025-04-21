@@ -1,38 +1,55 @@
--- Loader Script (obj.luau)
+-- obj.luau
 local function LoadScript(url, scriptName)
+    -- HTTP Fetch
     local success, content = pcall(game.HttpGetAsync, game, url)
-    
     if not success then
-        warn("❌ HTTP Error loading "..scriptName..":", content)
-        return false
+        warn("❌ HTTP Error:", scriptName, content)
+        return nil
     end
     
-    local success, err = pcall(loadstring(content))
-    if not success then
-        warn("❌ Execution Error in "..scriptName..":", err)
-        return false
+    -- Compile
+    local func, err = loadstring(content)
+    if not func then
+        warn("❌ Compile Error:", scriptName, err)
+        return nil
     end
     
-    print("✅ Successfully loaded "..scriptName)
-    return true
+    -- Execute
+    local success, result = pcall(func)
+    if not success then
+        warn("❌ Runtime Error:", scriptName, result)
+        return nil
+    end
+    
+    print("✅ Loaded:", scriptName)
+    return result
 end
 
--- Configure URLs (FIXED: removed /refs/heads from URLs)
+-- URLs (FIXED: Remove /refs/heads)
 local URLs = {
     Src = "https://raw.githubusercontent.com/MappleGaming208/Magic/main/Scripts/Development/DeadRailsHub/src.luau",
-    Config = "https://raw.githubusercontent.com/MappleGaming208/Magic/main/Scripts/Development/DeadRailsHub/config.luau",
-    Main = "https://raw.githubusercontent.com/MappleGaming208/Magic/main/Scripts/Development/DeadRailsHub/obj.luau"
+    Config = "https://raw.githubusercontent.com/MappleGaming208/Magic/main/Scripts/Development/DeadRailsHub/config.luau"
 }
 
--- Load Order: 1. Source, 2. Config, 3. Main
-if LoadScript(URLs.Src, "Source") then
-    if LoadScript(URLs.Config, "Config") then
-        if not LoadScript(URLs.Main, "Main") then
-            warn("⚠️ Application failed to start!")
-        end
+-- Load Library
+local Library = LoadScript(URLs.Src, "Source")
+if not Library then
+    error("Critical: Library failed to load!")
+end
+
+-- Debug Library
+print("Library Type:", typeof(Library))
+print("Themes Available:", next(Library.Themes) ~= nil)
+
+-- Load Config
+local Config = LoadScript(URLs.Config, "Config")
+if Config then
+    local GUI = Config(Library)
+    if GUI then
+        print("GUI Created Successfully!")
     else
-        warn("⚠️ Config failed - cannot start application!")
+        warn("⚠️ GUI Creation Failed!")
     end
 else
-    warn("⚠️ Critical failure - couldn't load source code!")
+    warn("⚠️ Config Failed!")
 end
