@@ -8,7 +8,7 @@ local MainLink = urls.repo .. urls.source .. ".luau"
 local SuccessfullyLoadedLibrary, LoadLibrary = pcall(game.HttpGet, game, MainLink, true)
 
 if SuccessfullyLoadedLibrary then
-    local ui = loadstring(LoadLibrary)()
+    local GUI = loadstring(LoadLibrary)()
 else
     warn("Error fetching:", LoadLibrary)
 end
