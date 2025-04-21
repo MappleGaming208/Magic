@@ -45,7 +45,7 @@ game:GetService("UserInputService").InputBegan:Connect(function(input, gameProce
 end)
 ]]--
 local urls = {
-    repo = "https://raw.githubusercontent.com/MappleGaming208/Magic/Scripts/Development/DeadRailsHub/",
+    repo = "https://raw.githubusercontent.com/MappleGaming208/Magic/main/Scripts/Development/DeadRailsHub/",
     file = "src",
 }
 
