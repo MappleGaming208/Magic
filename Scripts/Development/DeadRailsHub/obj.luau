@@ -48,4 +48,4 @@ local urls = {
  repo = "https://raw.githubusercontent.com/MappleGaming208/Magic/Scripts/Development/DeadRailsHub/",
  file = "src",
 }
-local ui = loadstring(game:HttpGet(Params.Repo .. Params.file .. ".luau", true)()
+local ui = loadstring(game:HttpGet(Params.repo .. Params.file .. ".luau", true)()
