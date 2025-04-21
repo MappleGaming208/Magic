@@ -5,19 +5,27 @@ local urls = {
 }
 
 local MainLink = urls.repo .. urls.source .. ".luau?raw=true"
-local SuccessfullyLoadedLibrary, LoadLibrary = pcall(game.HttpGet, game, MainLink, true)
+local SuccessfullyLoadedLibrary, LoadLibrary = pcall(game.HttpGetAsync, MainLink)
 
 if SuccessfullyLoadedLibrary then
-    local Mercury = loadstring(LoadLibrary)(), print(LoadLibrary),
+    local success, Mercury = pcall(loadstring(LoadLibrary))  -- Proper error handling
+    if success then
+        print("Mercury loaded successfully!")
+    else
+        warn("Failed to execute Mercury:", Mercury)
+    end
 else
-    warn("Error fetching v1:", LoadLibrary)
+    warn("Error fetching Mercury:", LoadLibrary)
 end
 
-local config = urls.repo .. urls.config .. ".luau?raw=true"
-local LoadedConfig, LoadConfig = pcall(game.HttpGet, game, config, true)
+local configLink = urls.repo .. urls.config .. ".luau?raw=true"
+local LoadedConfig, LoadConfig = pcall(game.HttpGetAsync, configLink)
 
 if LoadedConfig then
-    loadstring(LoadConfig)()
+    local success, err = pcall(loadstring(LoadConfig))  -- Added error wrapping
+    if not success then
+        warn("Failed to load config:", err)
+    end
 else
-    warn("Error fetching v2:", LoadConfig)
+    warn("Error fetching config:", LoadConfig)
 end
