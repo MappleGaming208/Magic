@@ -1,14 +1,23 @@
 local urls = {
     repo = "https://raw.githubusercontent.com/MappleGaming208/Magic/main/Scripts/Development/DeadRailsHub/",
-    file = "src",
+    source = "src",
+    config = "config",
 }
 
-local fullURL = urls.repo .. urls.file .. ".luau"
-local success, result = pcall(game.HttpGet, game, fullURL, true)
+local MainLink = urls.repo .. urls.source .. ".luau"
+local SuccessfullyLoadedLibrary, LoadLibrary = pcall(game.HttpGet, game, MainLink, true)
 
-if success then
-    local ui = loadstring(result)()
+if SuccessfullyLoadedLibrary then
+    local ui = loadstring(LoadLibrary)()
 else
-    warn("Error fetching script:", result)
+    warn("Error fetching:", LoadLibrary)
 end
 
+local config = urls.repo .. urls.config .. ".luau"
+local LoadedConfig, LoadConfig = pcall(game.HttpGet, game, config, true)
+
+if LoadedConfig then
+    loadstring(LoadConfig)()
+else
+    warn("Error fetching:", LoadConfig)
+end
